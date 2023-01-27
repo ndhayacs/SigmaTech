@@ -1,0 +1,68 @@
+@page "/contact"
+
+<PageTitle>Contact</PageTitle>
+
+<h2 class="my-5">Contact Us</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Please fill the form below</h3>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 my-2">
+                            <input type="text" class="form-control" placeholder="First name" @bind-value="firstname">
+                        </div>
+                        <div class="col-md-6 my-2">
+                            <input type="text" class="form-control" placeholder="Last name" @bind-value="lastname">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 my-3">
+                            <input type="text" class="form-control" placeholder="Email" @bind-value="email">
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <input type="number" class="form-control" placeholder="Phone" @bind-value="phone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 my-3">
+                            <button type="button" class="btn btn-primary" @onclick="resetData">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <p class="mx-2 px-2">
+                @firstname @lastname
+            </p>
+            <p class="mx-2 px-2">
+                @email<br> @phone
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores ex totam esse, voluptatum quaerat minima
+            neque
+            reiciendis repellat maiores obcaecati qui et sapiente illo, odit, recusandae non eius tenetur? Libero quod
+            amet
+        </p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam neque veniam perspiciatis repellat sint vero
+            iusto, nostrum delectus, nihil ex odio, labore officia nisi cum asperiores accusamus soluta maxime
+            laboriosam recusandae reiciendis atque eaque cumque suscipit! Sequi magnam quae voluptate eveniet nam, at
+            distinctio! Minus aut similique sunt temporibus sequi consectetur.
+        </p>
+    </div>
+</div>
+@code {
+    private string firstname { get; set; } = "";
+    private string lastname { get; set; } = "";
+    private string email { get; set; } = "";
+    private string phone { get; set; } = "";
+    private void resetData()
+    {
+        firstname = "";
+        lastname = "";
+        email = "";
+        phone = "";
+    }
+}
