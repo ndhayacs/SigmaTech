@@ -2,42 +2,47 @@
 
 <PageTitle>Contact</PageTitle>
 
-<h2 class="my-5">Contact Us</h2>
+<h1 class="my-5">Contact Us</h1>
 <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">Please fill the form below</h3>
+                <h3 class="card-title">Please fill and submit the form below</h3>
                 <form>
                     <div class="row">
                         <div class="col-md-6 my-2">
-                            <input type="text" class="form-control" placeholder="First name" @bind-value="firstname">
+                            <input type="text" class="form-control" placeholder="First name" @bind="firstname">
                         </div>
                         <div class="col-md-6 my-2">
-                            <input type="text" class="form-control" placeholder="Last name" @bind-value="lastname">
+                            <input type="text" class="form-control" placeholder="Last name" @bind="lastname">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 my-3">
-                            <input type="text" class="form-control" placeholder="Email" @bind-value="email">
+                            <input type="text" class="form-control" placeholder="Email" @bind="email">
                         </div>
                         <div class="col-md-6 my-3">
-                            <input type="number" class="form-control" placeholder="Phone" @bind-value="phone">
+                            <input type="text" class="form-control" placeholder="Phone" @bind="phone">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 my-3">
-                            <button type="button" class="btn btn-primary" @onclick="resetData">Reset</button>
+                            <button type="button" class="btn btn-primary" @onclick="Submit">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <p class="mx-2 px-2">
-                @firstname @lastname
-            </p>
-            <p class="mx-2 px-2">
-                @email<br> @phone
-            </p>
+            @if (showFormData)
+            {
+                <div class="alert alert-success mx-3" role="alert">
+                    <h4>Success!</h4>
+                    <p>Dear @firstname, your application has been submitted successfully!</p>
+                    <p>Your details are as follows. </p>
+                    <p> Name: @firstname @lastname</p>
+                    <p>Email: @email</p>
+                    <p>Phone: @phone</p>
+                </div>
+            }
         </div>
     </div>
     <div class="col-md-4">
@@ -58,11 +63,11 @@
     private string lastname { get; set; } = "";
     private string email { get; set; } = "";
     private string phone { get; set; } = "";
-    private void resetData()
+    private bool showFormData;
+    private void Submit()
     {
-        firstname = "";
-        lastname = "";
-        email = "";
-        phone = "";
+
+        showFormData = true;
+
     }
 }
